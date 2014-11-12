@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <title>Test</title>
 <style type="text/css">
-#problems td {
+#inputs td {
 	text-align: right;
 }
 </style>
@@ -62,10 +62,46 @@ function generateProblems(form)
 
 	old_tbody.parentNode.replaceChild(new_tbody, old_tbody);
 }
+function populateInputs()
+{
+	var old_tbody = document.getElementById('inputs');
+	var new_tbody = document.createElement('tbody');
+	new_tbody.setAttribute('id', 'inputs');
+
+	var tr = document.createElement('TR');
+	var td = document.createElement('TD');
+	tr.appendChild(td);
+	for (divisor=1; divisor<10; divisor++) {
+		var td = document.createElement('TD');
+		td.appendChild(document.createTextNode(divisor));
+		tr.appendChild(td);
+	}
+	new_tbody.appendChild(tr);
+
+	for (quotient=0; quotient<10; quotient++) {
+		var tr = document.createElement('TR');
+
+		var td = document.createElement('TD');
+		td.appendChild(document.createTextNode(quotient));
+		tr.appendChild(td);
+
+		for (divisor=1; divisor<10; divisor++) {
+			var td = document.createElement('TD');
+			td.appendChild(document.createTextNode(divisor * quotient));
+			tr.appendChild(td);
+		}
+
+		new_tbody.appendChild(tr);
+	}
+
+	old_tbody.parentNode.replaceChild(new_tbody, old_tbody);
+}
+window.onload = populateInputs;
 </script>
 </head>
 <body>
 Test
+<!--
 <form name="inputs">
 	<table>
 		<tr>
@@ -88,6 +124,11 @@ Test
 	<input type="button" name="generate" value="Generate Problems"
 		onClick="javascript:generateProblems(this.form)">
 </form>
+-->
+<table>
+<tbody id="inputs">
+</tbody>
+</table>
 <table>
 <!--
 	<tr>
