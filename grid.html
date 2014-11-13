@@ -40,8 +40,28 @@ function shuffle(array) {
 	return array;
 }
 
+function showGrid()
+{
+	var before = document.getElementById('before');
+	before.style.display = 'block';
+
+	var after = document.getElementById('after');
+	after.style.display = 'none';
+}
+
+function hideGrid()
+{
+	var before = document.getElementById('before');
+	before.style.display = 'none';
+
+	var after = document.getElementById('after');
+	after.style.display = 'block';
+}
+
 function generateProblems(form)
 {
+	hideGrid();
+
 	var problems = [];
 
 	for (divisor=MIN_DIVISOR; divisor<=MAX_DIVISOR; divisor++) {
@@ -119,6 +139,8 @@ function generateProblems(form)
 
 function populateInputs()
 {
+	showGrid();
+
 	var old_tbody = document.getElementById('inputs');
 	var new_tbody = document.createElement('tbody');
 	new_tbody.setAttribute('id', 'inputs');
@@ -159,9 +181,12 @@ function populateInputs()
 }
 
 window.onload = populateInputs;
+
 </script>
 </head>
 <body>
+
+<div id="before">
 <form>
 	<table>
 		<tbody id="inputs">
@@ -173,6 +198,14 @@ window.onload = populateInputs;
 	<input type="button" name="generate" value="Generate Problems"
 		onClick="javascript:generateProblems(this.form)">
 </form>
+</div>
+
+<div id="after">
+<form>
+	<input type="button" name="show" value="Show Grid"
+		onClick="javascript:showGrid()">
+</form>
+</div>
 
 <table>
 	<tbody id="problems">
