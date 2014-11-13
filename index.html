@@ -3,104 +3,13 @@
 <head>
 <meta charset="utf-8">
 <title>Test</title>
-<style type="text/css">
-#problems td {
-	text-align: right;
-}
-</style>
-<script language="javascript">
-function getRandomInt(min, max) {
-	return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-function generateProblems(form)
-{
-	var minDiv = parseInt(form.min_divisor.value);
-	var maxDiv = parseInt(form.max_divisor.value);
-	var minQuot = parseInt(form.min_quotient.value);
-	var maxQuot = parseInt(form.max_quotient.value);
-
-	var old_tbody = document.getElementById('problems');
-	var new_tbody = document.createElement('tbody');
-	new_tbody.setAttribute('id', 'problems');
-
-	for (i=0; i<form.num_problems.value; i++) {
-		var divisor = getRandomInt(minDiv, maxDiv);
-		var quotient = getRandomInt(minQuot, maxQuot);
-		var dividend = divisor * quotient;
-
-		var tr = document.createElement('TR');
-
-		var td = document.createElement('TD');
-		td.appendChild(document.createTextNode(i + 1 + ")"));
-		tr.appendChild(td);
-
-		var td = document.createElement('TD');
-		td.appendChild(document.createTextNode(dividend));
-		tr.appendChild(td);
-
-		var td = document.createElement('TD');
-		td.appendChild(document.createTextNode('/'));
-		tr.appendChild(td);
-
-		var td = document.createElement('TD');
-		td.appendChild(document.createTextNode(divisor));
-		tr.appendChild(td);
-
-		var td = document.createElement('TD');
-		td.appendChild(document.createTextNode('='));
-		tr.appendChild(td);
-
-		var td = document.createElement('TD');
-/*
-		td.appendChild(document.createTextNode(quotient));
-*/
-		td.appendChild(document.createTextNode('_____'));
-		tr.appendChild(td);
-
-		new_tbody.appendChild(tr);
-	}
-
-	old_tbody.parentNode.replaceChild(new_tbody, old_tbody);
-}
-</script>
-</head>
 <body>
 Test
-<form name="inputs">
-	<table>
-		<tr>
-			<td>Divisor</td>
-			<td><input type="number" name="min_divisor" min="1" value="1"></td>
-			<td>-</td>
-			<td><input type="number" name="max_divisor" min="1" value="9"></td>
-		</tr>
-		<tr>
-			<td>Quotient</td>
-			<td><input type="number" name="min_quotient" min="0" value="0"></td>
-			<td>-</td>
-			<td><input type="number" name="max_quotient" min="0" value="9"></td>
-		</tr>
-		<tr>
-			<td>Problems</td>
-			<td><input type="number" name="num_problems" min="1" value="10"></td>
-		</tr>
-	</table>
-	<input type="button" name="generate" value="Generate Problems"
-		onClick="javascript:generateProblems(this.form)">
-</form>
-<table>
-<!--
-	<tr>
-		<td>#</td>
-		<td>Dividend</td>
-		<td>/</td>
-		<td>Divisor</td>
-		<td>=</td>
-		<td>Quotient</td>
-	</tr>
--->
-<tbody id="problems">
-</tbody>
-</table>
+<ul>
+<li>
+<a href="grid.html">Grid</a>
+<a href="range.html">Range</a>
+</li>
+</ul>
 </body>
 </html>
